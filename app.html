@@ -1,0 +1,48 @@
+<html>
+  <body>
+    <div id ="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type= 'text/jsx'>
+        // select the div element with id of 'app'
+        const app = document.getElementById('app');
+        
+        function Header(props){
+            return(<h1>Develop. Preview. Ship {props.title}</h1>)
+        }
+
+        function HomePage(){
+            const names = ['Ada', 'Vida', 'Aso', 'Lila'];
+
+            const [likes, setLikes] = React.useState(0);
+            
+            const handleClick = () => {
+                console.log('Hi Likes')
+                setLikes((likes) => likes + 1)
+
+            };
+            return(
+                <div>
+                    <Header title = "React" />
+                    <Header title="TypeScripts" />
+                    <ul>
+                        {names.map((name) => <li  key={name}>{name}</li>)}
+                    </ul>
+                    <button onClick={handleClick}>Likes{likes}</button>
+
+                </div>
+            )
+        }
+
+
+
+        //create Root of tree? with div element with id of 'app'
+        const root = ReactDOM.createRoot(app)
+        // render some content in this div element
+        root.render(<HomePage />)
+
+      
+    </script>
+  </body>
+</html>
